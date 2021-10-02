@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "news api",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
     "dev": "SET API_KEY=9fa0919350c54089904d325383dfe741 npx nodemon server.js",
     "test": "jest"
