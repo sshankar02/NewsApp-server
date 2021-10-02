@@ -1,0 +1,28 @@
+const express = require('express');
+const NewsAPI = require('newsapi');
+
+const app = (APP_KEY) =>{
+    server = express();
+
+    server.get('/', (req, res)=>{
+        const newsapi = new NewsAPI(APP_KEY);
+        newsapi.v2.topHeadlines({
+            language: 'en',
+            country: 'gb'
+        })
+        .catch(err=>{
+            console.log('error occurred in news api. Error description : ' + err)
+        })
+        .then(response => {
+            res.status(200).send({statusMessage:"success", data:response});
+        });
+    })
+
+    server.get('*', (req, res)=>{
+        res.status(404).send(`<h1>404! Route not found</h1>`)
+    })
+
+    return server;
+}
+
+module.exports = app
