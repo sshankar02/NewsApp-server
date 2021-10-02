@@ -5,8 +5,9 @@
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "SET API_KEY=9fa0919350c54089904d325383dfe741 && node server.js",
-    "test": "jest"
+    "dev": "SET API_KEY='' && node server.js",
+    "test": "jest",
+    "start": "node server.js"
   },
   "author": "Saurabh Shankar",
   "license": "MIT",
