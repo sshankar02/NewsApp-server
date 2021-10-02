@@ -10,13 +10,13 @@ describe("app", ()=>{
     )
 
     // testing endpoints
-    it("should load news from the news api", async ()=> 
-        await supertest(server).get('/')
-                .expect(200)
-                .then( response =>{
-                    const articles = response.body.data.articles;
-                    expect(articles.length).not.toBe(0);
-                })
+    it("should load top headlines from the news api", ()=> 
+        supertest(server).get('/')
+            .expect(200)
+            .then( response =>{
+                const articles = response.body.data.articles;
+                expect(articles.length).not.toBe(0);
+            })
     )
 
     it("should return 404 when identified api endpoint was used", ()=>
@@ -24,4 +24,21 @@ describe("app", ()=>{
     )
 
     // testing keyword based filter of news.
+    it("should return filtered news based on keyword provided", ()=>{
+        supertest(server).get('/q=bitcoin')
+            .expect(200)
+            .then(response =>{
+                const articles = response.body.data.articles;
+                expect(articles.length).not.toBe(0);
+            })
+    })
+
+    it("should load top headlines from the news api when no query filter is specified",()=>{
+        supertest(server).get('/query')
+            .expect(200)
+            .then( response =>{
+                const articles = response.body.data.articles;
+                expect(articles.length).not.toBe(0);
+            })
+    })
 })

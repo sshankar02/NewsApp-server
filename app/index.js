@@ -3,9 +3,9 @@ const NewsAPI = require('newsapi');
 
 const app = (APP_KEY) =>{
     server = express();
+    const newsapi = new NewsAPI(APP_KEY);
 
-    server.get('/', (req, res)=>{
-        const newsapi = new NewsAPI(APP_KEY);
+    server.get(['/', '/query'], (req, res)=>{
         newsapi.v2.topHeadlines({
             language: 'en',
             country: 'gb'
@@ -16,6 +16,20 @@ const app = (APP_KEY) =>{
         .then(response => {
             res.status(200).send({statusMessage:"success", data:response});
         });
+    })
+
+    server.get('/query/:q', (req, res)=>{
+        const filterKeyword = req.params['q'];
+        newsapi.v2.everything({
+            q: filterKeyword,
+            language: 'en'
+        })
+        .catch(err=>{
+            console.log('error occurred in news api. Error description : ' + err)
+        })
+        .then(response => {
+            res.status(200).send({statusMessage:"success", data:response});
+        })
     })
 
     server.get('*', (req, res)=>{
