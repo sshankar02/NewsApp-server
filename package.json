@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "news api",
+  "main": "server.js",
+  "scripts": {
+    "dev": "SET API_KEY=9fa0919350c54089904d325383dfe741 npx nodemon server.js",
+    "test": "jest"
+  },
+  "author": "Saurabh Shankar",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "supertest": "^6.1.6"
+  }
+}
