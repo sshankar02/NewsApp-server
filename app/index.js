@@ -5,6 +5,13 @@ const app = (APP_KEY) =>{
     server = express();
     const newsapi = new NewsAPI(APP_KEY);
 
+    server.use((req, res, next) =>{
+        res.header('Access-Control-Allow-Origin', 'http://localhost:3011');
+        res.header('Access-Control-Allow-Methods', 'GET');
+
+        next();
+    })
+
     server.get(['/', '/query'], (req, res)=>{
         newsapi.v2.topHeadlines({
             language: 'en',
