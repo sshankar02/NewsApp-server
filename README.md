@@ -6,7 +6,7 @@ This is a back end server api which fetched the news from newapi.org for UK (gb)
 
 The app is built using node and express framework.
 
-Application architecture and landscape description can be found [here](https://github.com/sshankar02/NewsApp-server/docs/Architecture&Landscape.png).
+Application architecture and landscape description can be found [here](https://github.com/sshankar02/NewsApp-server/blob/main/docs/Architecture&Landscape.png).
 
 # Starting the server
 
